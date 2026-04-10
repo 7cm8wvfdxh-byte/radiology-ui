@@ -70,7 +70,7 @@ export default function LearnPage() {
   function drawGraph(data: MapData) {
     const svg = svgRef.current!
     const W = svg.clientWidth || 700
-    const H = svg.clientHeight || 500
+    const H = svg.clientHeight || 900
 
     svg.innerHTML = ''
 
@@ -148,7 +148,7 @@ export default function LearnPage() {
       const dist = Math.sqrt(dx * dx + dy * dy)
       const nx = dx / dist
       const ny = dy / dist
-      const r = 36
+      const r = 26
 
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line')
       line.setAttribute('x1', String(from.x + nx * r))
