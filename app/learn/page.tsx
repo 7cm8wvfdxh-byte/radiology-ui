@@ -9,6 +9,9 @@ const LEVEL_COLORS: Record<number, { bg: string; border: string; text: string; l
   1: { bg: '#E1F5EE', border: '#1D9E75', text: '#085041', label: 'Temel' },
   2: { bg: '#FAEEDA', border: '#EF9F27', text: '#412402', label: 'Orta' },
   3: { bg: '#FAECE7', border: '#D85A30', text: '#4A1B0C', label: 'İleri' },
+  4: { bg: '#EEE8FA', border: '#7C3AED', text: '#3B0764', label: 'Ayırıcı Tanı' },
+  5: { bg: '#FDE8F0', border: '#DB2777', text: '#500724', label: 'Tuzaklar' },
+  6: { bg: '#E0F2FE', border: '#0284C7', text: '#0C4A6E', label: 'Multimodal' },
 }
 
 const CATEGORY_ICONS: Record<string, string> = {
@@ -75,14 +78,14 @@ export default function LearnPage() {
     const links = data.prerequisites
 
     // Seviyeye göre y pozisyonu
-    const levelY: Record<number, number> = { 1: H * 0.2, 2: H * 0.5, 3: H * 0.8 }
+    const levelY: Record<number, number> = { 1: H * 0.08, 2: H * 0.22, 3: H * 0.38, 4: H * 0.55, 5: H * 0.72, 6: H * 0.88 }
 
     // X pozisyonu — aynı seviyedekiler eşit aralıklı
-    const levelGroups: Record<number, Concept[]> = { 1: [], 2: [], 3: [] }
+    const levelGroups: Record<number, Concept[]> = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] }
     concepts.forEach(c => levelGroups[c.level]?.push(c))
 
     const positions: Record<string, { x: number; y: number }> = {}
-    ;[1, 2, 3].forEach(level => {
+    ;[1, 2, 3, 4, 5, 6].forEach(level => {
       const group = levelGroups[level]
       group.forEach((c, i) => {
         const total = group.length
@@ -110,7 +113,7 @@ export default function LearnPage() {
     svg.appendChild(defs)
 
     // Seviye etiketleri
-    ;[1, 2, 3].forEach(level => {
+    ;[1, 2, 3, 4, 5, 6].forEach(level => {
       const info = LEVEL_COLORS[level]
       const text = document.createElementNS('http://www.w3.org/2000/svg', 'text')
       text.setAttribute('x', '12')
@@ -279,7 +282,7 @@ export default function LearnPage() {
               <>
                 {/* Seviye legendi */}
                 <div className="flex gap-4 mb-4">
-                  {[1, 2, 3].map(level => (
+                  {[1, 2, 3, 4, 5, 6].map(level => (
                     <div key={level} className="flex items-center gap-1.5">
                       <div
                         className="w-3 h-3 rounded-full"
