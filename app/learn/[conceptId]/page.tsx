@@ -5,7 +5,7 @@ import { useRouter, useParams } from 'next/navigation'
 
 const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
-const DEMO_USER = 'demo-user-123'
+const DEMO_USER = '00000000-0000-0000-0000-000000000001'
 
 interface Question {
   id: string
